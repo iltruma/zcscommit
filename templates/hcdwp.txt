@@ -1,0 +1,7 @@
+'{{#data}}
+{{numero}} - {{categoria}} \n
+RICHIESTA: {{titolo}}
+SOLUZIONE: \n
+{{messaggio}} \n
+SVILUPPO: Aggiornata {{versioni}}
+{{/data}}'
