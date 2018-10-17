@@ -29,17 +29,18 @@ $(document).ready(function(){
 
     $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
         if(stepNumber == 3){
-          alert("aaah");
-          $.get('templates/hcdwp.txt', function(templates) {
-              var data = JSON.parse('[{\"numero\":\"' + $("numero").value + '\",' +
-                                      '\"categoria\":\"' + $("categoria").value + '\",' +
-                                      '\"titolo\":\"' + $("titolo").value + '\",' +
-                                      '\"messaggio\":\"' + $("messaggio").value + '\",' +
-                                      '\"versioni\":\"' + $("versioni").value + '\",' +
-                                      + '}]');
-              $('risultato').innerHTML = Mustache.to_html(template, { data: data });
-          });
-        }
+          $.get( 'templates/hcdwp.hbs', function(source) {
+       	      var template = Handlebars.compile(source);
+       	      
+       	      var data = { "numero" : $("numero").value,
+       	      			   "categoria": $("categoria").value,
+       	      			   "titolo": $("titolo").value,
+       	      			   "messaggio": $("messaggio").value,
+       	      			   "versioni": $("versioni").value }
+       	      
+       	      $("#risultato").html(template(data));
+       	});
+      }
     });
 
 });
