@@ -32,14 +32,14 @@ $(document).ready(function(){
           $.get( 'templates/hcdwp.hbs', function(source) {
        	      var template = Handlebars.compile(source);
        	      
-       	      var data = { "numero" : $("numero").value,
-       	      			   "categoria": $("categoria").value,
-       	      			   "titolo": $("titolo").value,
-       	      			   "messaggio": $("messaggio").value,
-       	      			   "versioni": $("versioni").value }
+       	      var data = { "numero" : $("#numero").val(),
+       	      			   "categoria": $("#categoria").val(),
+       	      			   "titolo": $("#titolo").val(),
+       	      			   "messaggio": $("#messaggio").val(),
+       	      			   "versioni": $("#versioni").val() }
        	      
        	      $("#risultato").html(template(data));
-       	});
+       	}, 'html');
       }
     });
 
