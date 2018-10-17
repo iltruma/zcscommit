@@ -6,7 +6,7 @@ $(document).ready(function(){
     var html = Mustache.to_html(template, { data: data });
     */
 
-    var btnCancel = $('<button></button>').text('Cancel').addClass('btn btn-danger').on('click', function(){
+    var btnCancel = $('<button></button>').text('Reset').addClass('btn btn-danger').on('click', function(){
         $('#smartwizard').smartWizard("reset");
         $('#myForm').find("input, textarea").val("");
     });
@@ -15,16 +15,24 @@ $(document).ready(function(){
     $('#smartwizard').smartWizard({
             selected: 0,
             theme: 'arrows',
+            keyNavigation: false,
             transitionEffect:'fade',
-            toolbarSettings: {toolbarPosition: 'bottom',
-                              toolbarExtraButtons: [btnCancel]
-                            },
+            useURLhash: true,
+            autoAdjustHeight: false,
+            toolbarSettings: {
+            	toolbarPosition: 'bottom',
+                toolbarExtraButtons: [btnCancel]
+            },
+	        lang: {
+	            next: 'Avanti', 
+	            previous: 'Indietro'
+	        },
             anchorSettings: {
-                        markDoneStep: true, // add done css
-                        markAllPreviousStepsAsDone: true, // When a step selected by url hash, all previous steps are marked done
-                        removeDoneStepOnNavigateBack: true, // While navigate back done step after active step will be cleared
-                        enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
-                    }
+                markDoneStep: true, // add done css
+                markAllPreviousStepsAsDone: true, // When a step selected by url hash, all previous steps are marked done
+                removeDoneStepOnNavigateBack: true, // While navigate back done step after active step will be cleared
+                enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
+            }
     });
 
     $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
