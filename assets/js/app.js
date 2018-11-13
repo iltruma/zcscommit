@@ -41,14 +41,15 @@ $(document).ready(function(){
         if(stepNumber == 3){
           $.get( 'templates/hcdwp.hbs', function(source) {
        	      var template = Handlebars.compile(source);
-       	      
+
        	      var data = { "numero" : $("#numero").val(),
        	      			   "categoria": $("#categoria").val(),
        	      			   "titolo": $("#titolo").val(),
        	      			   "messaggio": $("#messaggio").val(),
-       	      			   "versioni": $("#versioni").val() }
-       	      
-       	      $("#risultato").html(template(data));
+       	      			   "versioni": $("#versioni").val()
+       	      			 }
+
+       	      $("#risultato").val(template(data));
        	}, 'html');
       }
     });
