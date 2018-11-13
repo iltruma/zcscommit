@@ -8,8 +8,10 @@ $(document).ready(function(){
 
     var btnCancel = $('<button></button>').text('Reset').addClass('btn btn-danger').on('click', function(){
         $('#smartwizard').smartWizard("reset");
-        $('#myForm').find("input, textarea").val("");
+        $('#myForm').find("input[type=text], textarea").val("");
     });
+    
+    
 
     // Smart Wizard
     $('#smartwizard').smartWizard({
