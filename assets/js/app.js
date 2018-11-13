@@ -8,8 +8,10 @@ $(document).ready(function(){
 
     var btnCancel = $('<button></button>').text('Reset').addClass('btn btn-danger').on('click', function(){
         $('#smartwizard').smartWizard("reset");
-        $('#myForm').find("input, textarea").val("");
+        $('#myForm').find("input[type=text], textarea").val("");
     });
+    
+    
 
     // Smart Wizard
     $('#smartwizard').smartWizard({
@@ -39,14 +41,15 @@ $(document).ready(function(){
         if(stepNumber == 3){
           $.get( 'templates/hcdwp.hbs', function(source) {
        	      var template = Handlebars.compile(source);
-       	      
+
        	      var data = { "numero" : $("#numero").val(),
        	      			   "categoria": $("#categoria").val(),
        	      			   "titolo": $("#titolo").val(),
        	      			   "messaggio": $("#messaggio").val(),
-       	      			   "versioni": $("#versioni").val() }
-       	      
-       	      $("#risultato").html(template(data));
+       	      			   "versioni": $("#versioni").val()
+       	      			 }
+
+       	      $("#risultato").val(template(data));
        	}, 'html');
       }
     });
